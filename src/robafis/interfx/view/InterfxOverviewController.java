@@ -6,6 +6,8 @@ import java.util.Iterator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -24,6 +26,9 @@ public class InterfxOverviewController {
 	
 	@FXML
 	private Button boutonDroite;
+	
+	@FXML
+	private ImageView batteryView = new ImageView();
 	
 	private MainApp mainApp;
 	
@@ -82,6 +87,17 @@ public class InterfxOverviewController {
 				}
 			});
 		}
+		showBatteryLevel();
+	}
+	
+	private void showBatteryLevel() {
+		String level = "80"; //A modifier par la méthode permettant de monitorer la batterie de la brick
+		if (level.contentEquals("100")) {batteryView.setImage(new Image("file:ressources/icons/battery_100.png"));}
+		if (level.contentEquals("80")) {batteryView.setImage(new Image("file:ressources/icons/battery_80.png"));}
+		if (level.contentEquals("60")) {batteryView.setImage(new Image("file:ressources/icons/battery_60.png"));}
+		if (level.contentEquals("40")) {batteryView.setImage(new Image("file:ressources/icons/battery_40.png"));}
+		if (level.contentEquals("20")) {batteryView.setImage(new Image("file:ressources/icons/battery_20.png"));}
+		if (level.contentEquals("0")) {batteryView.setImage(new Image("file:ressources/icons/battery_0.png"));}
 	}
 	
 	public void setMainApp(MainApp mainApp) {
